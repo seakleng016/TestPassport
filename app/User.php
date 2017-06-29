@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function findForPassport($identifier) {
+        return $this->orWhere('name', $identifier)->first();
+//        return $this->orWhere('email', $identifier)->orWhere('name', $identifier)->first();
+    }
 }
